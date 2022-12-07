@@ -6,9 +6,11 @@
       <h3>Your account:</h3>
       <router-link to="/account">Account</router-link>
     </div>
-    <NewTask />
+    <NewTask @emitTask ="getTasks" />
     <h1>Tasks:</h1>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
+    <TaskItem v-for="task in tasks" :key="task.id" :task="task"
+              @emitTask="getTasks"
+    />
   </div>
 </template>
 
@@ -19,6 +21,7 @@ import { useRouter } from 'vue-router';
 import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
+import { useUserStore } from "../stores/user";
 
 const taskStore = useTaskStore();
 
@@ -29,7 +32,6 @@ const tasks = ref([]);
 const getTasks = async() => {
   tasks.value = await taskStore.fetchTasks();
 };
-
 getTasks();
 
 </script>

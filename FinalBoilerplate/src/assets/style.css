@@ -8,14 +8,21 @@
     --fontBody: 'Helvetica';
 }
 
-SignIn Component
+.sign-up-link
+{
+    padding: 10px 25px;
+    background-color: #C17817;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+}
 
 h1 {
     color: var(--colorRed);
 }
 
-SignUp Component
+/* SignUp Component
 
 Home view
 
-Account View
+Account View */

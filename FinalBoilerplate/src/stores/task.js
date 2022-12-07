@@ -15,9 +15,7 @@ export const useTaskStore = defineStore("tasks", {
       this.tasks = tasks;
       return this.tasks;
     },
-    
     async addTask(title, description) {
-      console.log(useUserStore().user.id);
       const { data, error } = await supabase.from("tasks").insert([
         {
           user_id: useUserStore().user.id,
@@ -27,8 +25,19 @@ export const useTaskStore = defineStore("tasks", {
         },
       ]);
     },
+    async updateTask(title, description, id) {
+      const { data, error } = await supabase.from("tasks").update([
+          {
+            title: title,
+            description: description,
+          },
+        ])
+      .match({
+        id: id,
+      })
+    },
 
-    async deleteTask(id){
+    async deleteTask(id){ 
       const { data, error } = await supabase.from("tasks").delete().match({
         id: id,
       });
