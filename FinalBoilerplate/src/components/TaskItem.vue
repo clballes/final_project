@@ -1,21 +1,33 @@
 <template>
-<div class="container">
-        <h3>{{task.title}}</h3>
-        <p>{{task.description}}</p>
-    <button @click="deleteTask" class="button">Delete {{task.title}}</button>
-    <button @click="(editTask = !editTask)" class="button">Edit</button> 
-     <form 
-        @submit.prevent="onSubmit" 
-        v-show="!editTask" 
-        class="form">
-        <input 
-            type="text" 
-            v-model="name"/>
-        <input 
-            type="text" 
-            v-model="description"/>
-            <input type="submit" value="Change"/>
-     </form>
+<div class="todo-item">
+    <div class="container">
+        <div v-if="doneTask" class="doneText">
+            <h3>{{task.title}}</h3>
+            <p>{{task.description}}</p>
+        </div>
+        <div v-else>
+            <h3>{{task.title}}</h3>
+            <p>{{task.description}}</p>
+        </div>
+        <div class="buttonTaskDiv">
+            <button @click="(editTask = !editTask)" :class="'fa-regular fa-pen-to-square'"
+            class="buttonTask">Edit</button> 
+            <button @click="checkTask" :class="'fa-regular fa-circle-check'" class="buttonTask">Done</button>
+            <button @click="deleteTask" :class="'far fa-trash-alt'" class="buttonTask"></button>
+        </div>
+         <form 
+            @submit.prevent="onSubmit" 
+            v-show="!editTask" 
+            class="form">
+                <input 
+                    type="text" 
+                    v-model="name"/>
+                <input 
+                    type="text" 
+                    v-model="description"/>
+                <input type="submit" value="Change" class="submitButton"/>
+         </form>
+    </div>
 </div>
 </template> 
 
@@ -25,20 +37,29 @@ import { useTaskStore } from '../stores/task';
 import { supabase } from '../supabase';
 
 const emit = defineEmits(['emitTask'])
-
 const taskStore = useTaskStore();
 
 const props = defineProps({
     task: Object,
 });
-const name = ref(props.task.title);
-const description = ref(props.task.description);
+
+
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async() => {
     await taskStore.deleteTask(props.task.id);
     emit("emitTask");
 };
+//Cuando acabamos una tarea, subrayar las letras de title y paragrafo
+const doneTask = ref(props.task.is_complete);
 
+const checkTask = async () => {
+        doneTask.value = !doneTask.value;
+        await taskStore.updateDoneTask(props.task.is_complete, props.task.id);
+        emit("emitTask");
+};
+//Función para actualizar el name y la descripción, cuando picamos el button edit
+const name = ref(props.task.title);
+const description = ref(props.task.description);
 const editTask = ref(true);
 
 const onSubmit = async () => {
@@ -48,7 +69,6 @@ const onSubmit = async () => {
 </script>
 
 <style>
-
 </style>
 
 <!--

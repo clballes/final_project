@@ -1,28 +1,232 @@
 :root {
     --colorWhite: #ffffff;
     --colorBlack: #000000;
-    --colorRed: red;
+    --colorYellow: #C17817;;
     --fontSize-sm: 16px;
     --fontFamily: 'Arial, Helvetica, sans-serif';
     --fontTitle: 'Arial';
     --fontBody: 'Helvetica';
 }
 
-.sign-up-link
-{
+/* Newtask component styles */
+.newTaskDiv, .argumentTask{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.argumentTask{
+    gap: 10px;
+}
+
+.input-field input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* .sign-up-link{
     padding: 10px 25px;
     background-color: #C17817;
     text-decoration: none;
     color: white;
     border-radius: 20px;
+} */
+
+/* Taskitem disposition layout */
+.doneText {
+    text-decoration: line-through;
+}
+.homeTask{
+    margin: auto;
+    display: flex;
+    max-width: 1100px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+/* TaskItem style */
+.container{
+    display: flex;
+    background-color: #C17817;;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 3%;
+    position: relative;
+    border-radius: 5%;
+    box-shadow: 0 0 10px #3d4042;
+}
+.todo-item{
+    margin-top: 5px;
+    width: 33%;
+    height: 100%;
+}
+/* Button Task */
+.buttonTask{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10%;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    cursor: pointer;
+
+}
+.buttonTaskDiv{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+/* edit button style */
+.form{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 10%;
+}
+.form input{
+    border: none;
+    margin-bottom: 2px;
+}
+.submitButton {
+    padding: 2px;
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+.submitButton:hover, .button-sign:hover{
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+  cursor: pointer;
 }
 
 h1 {
-    color: var(--colorRed);
+    color: var(--colorYellow);
 }
 
-/* SignUp Component
+/* SignIn & Sign Up Component Style*/
+.container-sign{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url(/seascapes043.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+.header, .form-sign{
+        padding: 0% 2% 2% 2%;
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 20%;
+}
+/* SignIn Button */
+.button-sign{
+    background-color: #212020;
+    color: white;
+    border: #2c2a2a;
+    padding: 4%;
+    width: 35%;
+    border-radius: 10%;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #8a939b;
+}
+/* content sign in & sign up */
+.header-title {
+    font-size: 35px;
+    text-align: center;
+    color:#C17817;
+}
+.header-subtitle{
+    text-align: center;
+    font-size: 20px;
+}
+/* Form style SignIn & SignUp */
+.div-form-sign{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.div-form-sign input{
+    margin-top: 10px;
+    padding: 10px;
+    width: 92%;
+    border: none;
+}
+.div-form-sign input:focus {
+    outline: none !important;
+    border:1px solid #aeaca7;
+    box-shadow: 0 0 10px #8a939b;
+  }
+.sign-up-link-sign{
+    text-decoration: none;
+    margin-left: 8px;
+    color:rgb(193, 120, 23);
+}
+.div-form-sign p{
+    margin-top: 15%;
+}
+.input-field{
+    background-color: rgba(89, 89, 84, 0.4);
+}
+.form-input-email, .form-input-password, .form-input-confirm-password{
+    width: 100%;
+    margin-top: 3%;
+}
 
-Home view
+/* BUTTON HIDE AND SHOW PASSWORD */
+.field-has-addons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.button-eye{
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+}
+.show-hide-password{
+    width: 100%;
+}
+.show-hide-password input{
+    width: 100%;
+}
 
-Account View */
+/* MEDIA QUERY MOBILE SIGNIN & SIGNUP DESIGN*/
+@media  (max-width:420px){
+    /* MOBILE DESIGN FOR SIGNIN & SIGNUP DESIGN */
+    .header-title {
+        font-size: 25px;
+        text-align: center;
+        color:#C17817;
+    } 
+    .header-subtitle{
+        text-align: center;
+        font-size: 15px;
+    }
+    .header, .form-sign {
+        padding: 0% 2% 2% 2%;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 80%;
+    }
+    .form-input-email, .form-input-password, .form-input-confirm-password{
+        width: 80%;
+    }
+    .field-has-addons{
+        width: 80%;
+    }
+    /* MOBILE DESIGN FOR TASKITEMS */
+    .homeTask{
+        margin: auto;
+        display: flex;
+        max-width: 1100px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .todo-item{
+        width: 100%;
+    }
+}
+
+/*Account View */

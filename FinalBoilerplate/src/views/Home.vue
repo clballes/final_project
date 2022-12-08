@@ -3,14 +3,16 @@
     <Nav />
 
     <div class="content"> 
-      <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link>
+      <!-- <h3>Your account:</h3>
+      <router-link to="/account">Account</router-link> -->
     </div>
     <NewTask @emitTask ="getTasks" />
-    <h1>Tasks:</h1>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task"
-              @emitTask="getTasks"
-    />
+    <!-- <h1>Tasks:</h1> -->
+    <div class="homeTask">
+      <TaskItem v-for="task in tasks" :key="task.id" :task="task"
+                @emitTask="getTasks"
+      />
+    </div>
   </div>
 </template>
 
@@ -33,7 +35,6 @@ const getTasks = async() => {
   tasks.value = await taskStore.fetchTasks();
 };
 getTasks();
-
 </script>
 
 <style></style>

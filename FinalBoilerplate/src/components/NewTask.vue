@@ -1,16 +1,18 @@
 <template>
-    <h1>Add a new Task</h1>
-    <div v-if="showErrorMessage">
-        <p class="error-text">{{ errorMessage }}</p>
-    </div>
-    <div>
-        <div class="input-field">
-            <input type="text" placeholder="Add a Task Title - Listen to Kendrick Lamar" v-model="name">
+    <div class="newTaskDiv">
+        <h1>Add a new Task</h1>
+        <div v-if="showErrorMessage">
+            <p class="error-text">{{ showErrorMessage }}</p>
         </div>
-        <div class="input-field">
-            <input type="text" placeholder="Add a Task Description - Look up Kendrick Lamar's FEAR album on spotify and listen to the whole album." v-model="description">
+        <div class="argumentTask">
+            <div class="input-field">
+                <input type="text" placeholder="Add a Task Title" v-model="name">
+            </div>
+            <div class="input-field">
+                <input class="input-field-text" type="text" placeholder="Add a Task Description" v-model="description">
+            </div>
+             <button @click="addTask" class="button-sign" >Add</button>
         </div>
-         <button @click="addTask" class="button">Add</button>
     </div>
 </template>
 
@@ -30,7 +32,7 @@ const emit = defineEmits(['emitTask'])
 const addTask = async () => {
     if(name.value.length === 0 || description.value.length === 0){
         showErrorMessage.value = true;
-        errorMessage.value = 'The task title or description is empty';
+        showErrorMessage.value = 'The task title or description is empty';
         setTimeout(() => {
         showErrorMessage.value = false;
         }, 5000);

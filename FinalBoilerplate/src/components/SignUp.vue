@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-
+  <div class="container-sign">
     <div class="header">
       <div class="header-description">
         <h3 class="header-title">Register to ToDo App</h3>
@@ -8,9 +7,9 @@
       </div>
     </div>
 
-    <form @submit.prevent="signUp" class="form-sign-in">
-      <div class="form">
-        <div class="form-input">
+    <form @submit.prevent="signUp" class="form-sign">
+      <div class="div-form-sign">
+        <div class="form-input-email">
           <label class="input-field-label">E-mail</label>
           <input
             type="email"
@@ -21,7 +20,7 @@
             required
           />
         </div>
-        <div class="form-input">
+        <div class="form-input-password">
           <label class="input-field-label">Password</label>
           <input
             type="password"
@@ -32,7 +31,7 @@
             required
           />
         </div>
-        <div class="form-input">
+        <div class="form-input-confirm-password">
           <label class="input-field-label">Confirm password</label>
           <input
             type="password"
@@ -43,18 +42,17 @@
             required
           />
         </div>
-        <button class="button" type="submit">Sign Up</button>
+        <button class="button-sign" type="submit">Sign Up</button>
         <p>
           Have an account?
           <PersonalRouter
             :route="route"
             :buttonText="buttonText"
-            class="sign-up-link"
+            class="sign-up-link-sign"
           />
         </p>
       </div>
     </form>
-
     <div v-show="errorMsg">{{errorMsg}}</div>
   </div>
 </template>
