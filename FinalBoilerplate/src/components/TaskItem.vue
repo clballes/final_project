@@ -9,21 +9,30 @@
             <h3>{{task.title}}</h3>
             <p>{{task.description}}</p>
         </div>
-        <div class="buttonTaskDiv">
-            <button @click="(editTask = !editTask)" :class="'fa-regular fa-pen-to-square'"
-            class="buttonTask">Edit</button> 
-            <button @click="checkTask" :class="'fa-regular fa-circle-check'" class="buttonTask">Done</button>
-            <button @click="deleteTask" :class="'far fa-trash-alt'" class="buttonTask"></button>
+        <div class="button-Task-Div">
+            <button @click="(editTask = !editTask)" class="buttonTask">
+                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+            </button>
+            <button @click="checkTask" class="buttonTask">
+                <font-awesome-icon icon="fa-solid fa-square-check" />
+            </button>
+            <button @click="deleteTask" class="buttonTask">
+                <font-awesome-icon icon="fa-solid fa-trash" />
+            </button>
         </div>
          <form 
             @submit.prevent="onSubmit" 
             v-show="!editTask" 
-            class="form">
+            class="form-taskitem">
                 <input 
                     type="text" 
+                    placeholder="New title task"
+                    class="input-taskitem"
                     v-model="name"/>
                 <input 
                     type="text" 
+                    placeholder="New description task"
+                    class="input-taskitem"
                     v-model="description"/>
                 <input type="submit" value="Change" class="submitButton"/>
          </form>
@@ -32,6 +41,7 @@
 </template> 
 
 <script setup>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { ref, defineEmits } from 'vue';
 import { useTaskStore } from '../stores/task';
 import { supabase } from '../supabase';

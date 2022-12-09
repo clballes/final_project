@@ -4,8 +4,9 @@
     <div class="container-sign">
     <div class="header">
       <div class="header-description">
-        <h3 class="header-title">Sign in to ToDo App</h3>
-        <p class="header-subtitle">Start organizing your tasks <br> <b>Finish on time</b> <br>And enjoy your free time</p>
+        <img src="../assets/logo_tofotask_bwhite.webp" alt="logo" class="logo-icon">
+        <h2 class="header-title">Log in</h2>
+        <p class="header-subtitle">Start organizing your tasks<br> <b>Finish on time</b> <br>And enjoy your free time</p>
       </div>
     </div>
     <form @submit.prevent="signIn" class="form-sign">
@@ -22,8 +23,8 @@
           </div>
           <div class="field-has-addons">
             <div class="show-hide-password">
-              <input v-if="showPassword" type="text" class="input" v-model="password" required />
-              <input v-else type="password" class="input" v-model="password" required
+              <input v-if="showPassword" type="text" class="input" v-model="password" placeholder="Password" required />
+              <input v-else type="password" class="input-password" v-model="password" placeholder="Password" required
               />
               </div>
               <div class="control">

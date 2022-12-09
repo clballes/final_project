@@ -1,15 +1,16 @@
 <template>
     <div class="newTaskDiv">
         <h1>Add a new Task</h1>
+        <h2>Start organizing your time</h2>
         <div v-if="showErrorMessage">
             <p class="error-text">{{ showErrorMessage }}</p>
         </div>
         <div class="argumentTask">
-            <div class="input-field">
-                <input type="text" placeholder="Add a Task Title" v-model="name">
+            <div class="input-field-newtask">
+                <input type="text" placeholder="Add a Task Title" class="input-newtask-item" v-model="name">
             </div>
-            <div class="input-field">
-                <input class="input-field-text" type="text" placeholder="Add a Task Description" v-model="description">
+            <div class="input-field-newtask">
+                <input class="input-newtask-item" type="text" placeholder="Add a Task Description" v-model="description" >
             </div>
              <button @click="addTask" class="button-sign" >Add</button>
         </div>

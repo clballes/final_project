@@ -2,27 +2,32 @@
   <nav>
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
     <router-link to="/">
-      Home
+      <img src="../assets/logo_tofotask_bwhite.webp" alt="logo-tasks" class="navbar-img">
     </router-link>
-
-    <ul>
-        <li>
-          <router-link to="/">Task Manager</router-link>
-        </li>
-
-        <li>
-          <router-link to="/account">Your Account</router-link>
-        </li>
-    </ul>
-
     <div>
-      <ul>
+      <ul> 
         <li class="log-out-welcome">
           <p>Welcome, user</p>
         </li>
-        <li>
-          <button @click="signOut" class="button">Log out</button>
-        </li>
+        <div class="user-nav" :class="showNavMenu ? 'active' : 'false'">
+          <li>
+            <button @click="signOut" class="button">
+              <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="icon-font" />
+            </button>
+          </li>
+          <li>
+            <router-link to="/account">
+              <font-awesome-icon icon="fa-solid fa-user" class="icon-font" />
+            </router-link>
+          </li>
+        </div>
+
+        <div class="hamburguer" @click="hamburguerMenu"
+        :class="moveHamburger ? 'active' : 'inactive'">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
       </ul>
     </div>
   </nav>
@@ -34,6 +39,7 @@ import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { ref } from 'vue';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 //constant to save a variable that will hold the use router method
 const route = "/";
@@ -62,20 +68,38 @@ const signOut = async () => {
   return;
   errorMsg.value = "error";
 };
+// HAMBUERGUER MENU FUNCTIONS
+const moveHamburger = ref(false);
+const showNavMenu = ref(false);
 
+const hamburguerMenu = async () => {
+  moveHamburger.value = !moveHamburger.value;
+  showNavMenu.value = !showNavMenu.value;
+};
 </script>
 
 <style>
 .navbar-img {
-  width: 90px;
+  width: 30px;
+}
+.user-nav{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 20px;
+}
+
+a{
+  text-decoration: none;
 }
 
 nav {
-  background-color: lightgray;
+  background-color: white;
   display: flex;
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  position: sticky;
 }
 
 nav ul {
@@ -84,5 +108,71 @@ nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.icon-font{
+  height: 20px;
+  widows: 20px;
+  color: #C17817;
+  cursor: pointer;
+}
+button{
+  background-color: white;
+  border: none;
+}
+
+/* HAMBURGUER MENU */
+.hamburguer{
+    display: none;
+    cursor: pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3 ease-in-out;
+    transition: all 0.3 ease-in-out;
+    background-color:#6b708d96;
+}
+@media (max-width: 420px){
+    .nav{
+        display: flex;
+        justify-content: space-between;
+    }
+    .hamburguer{
+      display: block;
+    } 
+    .hamburguer.active .bar:nth-child(2){
+    opacity: 0;
+    }
+    .hamburguer.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburguer.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+    }
+    .user-nav.active{
+        left: 0;
+        top: 100px;
+        padding-left: 60px;
+        display: flex;
+        align-items: flex-start;
+    }
+    .user-nav{
+        position: fixed;
+        top: -100%;
+        background-color: rosybrown;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .user-nav.active{
+        left: 0;
+    }
+    ul{
+        padding-inline-start: 0px;
+    }
 }
 </style>
