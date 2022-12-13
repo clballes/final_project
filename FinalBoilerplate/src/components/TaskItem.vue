@@ -1,41 +1,51 @@
 <template>
 <div class="todo-item">
     <div class="container">
-        <div v-if="doneTask" class="doneText">
-            <h3>{{task.title}}</h3>
-            <p>{{task.description}}</p>
+        <div class="task-card">
+            <div>
+                <div v-if="doneTask" class="doneText">
+                    <h3>{{task.title}}</h3>
+                    <p>{{task.description}}</p>
+                </div>
+                <div v-else class="doneText2">
+                    <h3>{{task.title}}</h3>
+                    <p>{{task.description}}</p>
+                </div>
+            </div>
+            <div class="button-Task-Div">
+                <button @click="(editTask = !editTask)" class="buttonTask">
+                    <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+                </button>
+                <button @click="checkTask" class="buttonTask">
+                    <font-awesome-icon icon="fa-solid fa-square-check" />
+                </button>
+                <button @click="deleteTask" class="buttonTask">
+                    <font-awesome-icon icon="fa-solid fa-trash" />
+                </button>
+                <button class="buttonTask">
+                    <font-awesome-icon icon="fa-solid fa-heart" />
+                </button>
+            </div>
+            <div class="icon-instrument">
+                <font-awesome-icon icon="fa-solid fa-piano-keyboard" />
+            </div>
+             <form 
+                @submit.prevent="onSubmit" 
+                v-show="!editTask" 
+                class="form-taskitem">
+                    <input 
+                        type="text" 
+                        placeholder="New title task"
+                        class="input-taskitem"
+                        v-model="name"/>
+                    <input 
+                        type="text" 
+                        placeholder="New description task"
+                        class="input-taskitem"
+                        v-model="description"/>
+                    <input type="submit" value="Change" class="submitButton"/>
+             </form>
         </div>
-        <div v-else>
-            <h3>{{task.title}}</h3>
-            <p>{{task.description}}</p>
-        </div>
-        <div class="button-Task-Div">
-            <button @click="(editTask = !editTask)" class="buttonTask">
-                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-            </button>
-            <button @click="checkTask" class="buttonTask">
-                <font-awesome-icon icon="fa-solid fa-square-check" />
-            </button>
-            <button @click="deleteTask" class="buttonTask">
-                <font-awesome-icon icon="fa-solid fa-trash" />
-            </button>
-        </div>
-         <form 
-            @submit.prevent="onSubmit" 
-            v-show="!editTask" 
-            class="form-taskitem">
-                <input 
-                    type="text" 
-                    placeholder="New title task"
-                    class="input-taskitem"
-                    v-model="name"/>
-                <input 
-                    type="text" 
-                    placeholder="New description task"
-                    class="input-taskitem"
-                    v-model="description"/>
-                <input type="submit" value="Change" class="submitButton"/>
-         </form>
     </div>
 </div>
 </template> 
@@ -52,7 +62,6 @@ const taskStore = useTaskStore();
 const props = defineProps({
     task: Object,
 });
-
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async() => {

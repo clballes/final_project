@@ -1,11 +1,19 @@
+*{
+    margin: 0%;
+}
 :root {
     --colorWhite: #ffffff;
     --colorBlack: #000000;
-    --colorYellow: #C17817;;
+    --colorYello: #C17817;
+    --colorYellow: #FFC914;
+    --colorGreen: #76B041; 
+    --colorBlackLight: #2E282A;
+    --colorBlue: #0000ff;
+    --colorOrange: #E4572E;
     --fontSize-sm: 16px;
-    --fontFamily: 'Arial, Helvetica, sans-serif';
-    --fontTitle: 'Arial';
-    --fontBody: 'Helvetica';
+    --fontFamily: 'Arial, Helvetica, sans-serif, Roboto';
+    --fontTitle: 'Arial, Roboto';
+    --fontBody: 'Helvetica, Roboto';
 }
 
 /* Newtask component styles */
@@ -14,10 +22,14 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 5%;
+    z-index: 1;
+    /* background-image: url("../assets/studio.jpg"); */
 }
 .argumentTask{
     gap: 10px;
     width: 35%;
+    margin-top: 2%;
 }
 .newTaskDiv h2{
     margin-bottom: 30px;
@@ -27,16 +39,19 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+.task-card{
+    background-color: #0000ffde;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+}
 .input-newtask-item{
     width: 100%;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid rgb(210, 207, 207);
-}
-.input-newtask-item:focus {
-    outline: none !important;
-    border:1px solid #aeaca7;
-    box-shadow: 0 0 8px #b1bbc3;
 }
 .input-field-newtask{
     width: 100%;
@@ -45,26 +60,43 @@
 /* Taskitem disposition layout */
 .doneText {
     text-decoration: line-through;
+    text-align: center;
+    margin-top: 5%;
+    color: white;
+}
+.doneText2{
+    margin-top: 8%;
+    text-align: center;
+    color: white;
+}
+.doneText2 p{
+    margin-top: 5%;
+    color: white;
 }
 .homeTask{
     margin-top: 30px;
     display: flex;
-    max-width: 1100px;
+    max-width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
+    /* background-image: url("../assets/studio-modified.jpg"); */
+    /* background-repeat: no-repeat; */
+
 }
 /* TaskItem style */
 .container{
     display: flex;
-    background-color: rgba(193, 120, 23, 0.9);
+    background-image: url("../assets/plugin.jpeg");
+    opacity: 0.85;
+    background-repeat: none;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
-    padding: 3%;
+    margin: 5%;
+    padding: 10%;
     position: relative;
     border-radius: 5%;
-    box-shadow: 0 0 15px #7e8081;
+    box-shadow: 0 0 15px #515151;
 }
 .todo-item{
     margin-top: 5px;
@@ -79,12 +111,20 @@
     margin-bottom: 2px;
     margin-left: 5px;
     cursor: pointer;
+    color: white;
+}
+.buttonTask:hover{
+    color: #FFC914;
+}
+.svg-inline--f{
+    height: 16px;
 }
 
 .button-Task-Div{
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-top: 10%;
+    padding: 1%;
 }
 /* edit button style */
 .form-taskitem{
@@ -124,31 +164,31 @@
   cursor: pointer;
 }
 
-h1 {
-    color: var(--colorYellow);
-}
-
 /* SignIn & Sign Up Component Style*/
 .logo-icon{
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
+    margin-left: 5%;
     margin-top: 30px;
 }
 .container-sign{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;;
     width: 100%;
-    background-image: url(./seascapes043.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 800px;
+    position: fixed;
 }
 .header, .form-sign{
         padding: 0% 2% 0% 2%;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: #e4582ed5;
         width: 30%;
+        height: 40%;
+        position: relative;
+        left: 10%;
 }
 .header{
     border-radius: 20px 20px 0px 0px;
@@ -162,22 +202,54 @@ h1 {
     background-color: #212020;
     color: white;
     border: #2c2a2a;
-    padding: 2%;
-    width: 30%;
-    border-radius: 20px;
+    padding: 4%;
+    width: 45%;
+    border-radius: 8px;
     margin-top: 20px;
-    box-shadow: 0 0 10px #8a939b;
 }
 /* content sign in & sign up */
+hr{
+    margin-top: 5%;
+    border: solid 2px white;
+    width: 50%;
+    margin-left: 25%;
+}
+.button-google:hover{
+    background-color: #f7f6f6ce;
+    box-shadow: 0 0 8px #8a939ba0;
+
+}
+.icon-google{
+    height: 6%;
+    width: 6%;
+}
+
+.button-google{
+    background-color: #fbfbfb;
+    padding: 5%;
+    width: 90%;
+    border-radius: 8px;
+    margin: 8% 0% 2% 5%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.button-google a{
+    color: var(--colorOrange);
+    font-weight: 600;
+}
 .header-title {
     font-size: 35px;
-    text-align: center;
-    color:#C17817;
+    color: var(--colorWhite);
+    margin: 5% 0% 2% 5%;
 }
 .header-description{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-left: 1%;
+    margin-top: 8%;
 }
 .header-subtitle{
     text-align: center;
@@ -187,28 +259,39 @@ h1 {
 .div-form-sign{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
+    margin-left: 5%;
 }
 .div-form-sign input{
     margin-top: 10px;
     border: none;
-    border-radius: 20px;
-    padding: 10px 0px 10px 30px;
-    width: 92%;
+    border-radius: 8px;
+    padding: 15px 0px 15px 24px;
+    width: 89%;
 }
-.div-form-sign input:focus {
+.div-form-sign input:focus, .button-google:focus, .input-newtask-item:focus {
     outline: none !important;
     border:1px solid #aeaca7;
     box-shadow: 0 0 10px #8a939b;
   }
 .sign-up-link-sign{
     text-decoration: none;
-    margin-left: 8px;
-    color:rgb(193, 120, 23);
+    color: var(--colorWhite);
+    font-weight: 600;
+
 }
 .div-form-sign p{
     margin-top: 15%;
+    position: relative;
+    bottom: 530px;
+    left: 65%;
+    display: flex;
+    color: white;
+    font-weight: 500;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .input-field{
     background-color:rgba(255, 255, 255, 0.871) ;
@@ -224,15 +307,14 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: 95%;
 }
 .button-eye{
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
     margin-top: 10px;
     border: none;
-    border-radius: 0px 20px 20px 0px;
-    /* background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)); */
+    border-radius: 0px 8px 8px 0px;
 }
 .show-hide-password{
     width: 100%;
@@ -247,16 +329,24 @@ h1 {
     .header-title {
         font-size: 25px;
         text-align: center;
-        color:#C17817;
-    } 
+        color:white;
+    }
+    .header{
+        height: 32%;
+    }
     .header-subtitle{
         text-align: center;
         font-size: 15px;
     }
     .header, .form-sign {
         padding: 0% 2% 2% 2%;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: #e4582ed5;
         width: 80%;
+    }
+    .div-form-sign{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .input-password{
         width: 92% !important;
@@ -264,12 +354,17 @@ h1 {
     .div-form-sign input {
         width: 88%;
     }
+    .div-form-sign p{
+        bottom: 445px;
+        left: 23%;
+    }
     .form-input-email, .form-input-password, .form-input-confirm-password{
         width: 80%;
     }
     .field-has-addons{
         width: 80%;
-    }
+    
+}
     /* MOBILE DESIGN FOR TASKITEMS */
     .homeTask{
         margin: auto;
@@ -278,14 +373,17 @@ h1 {
         flex-direction: column;
         flex-wrap: wrap;
         align-items: flex-start;
-    }
+    
+}
     .todo-item{
         width: 100%;
-    }
+    
+}
      /* MOBILE DESIGN FOR TASKITEMS */
      .newTaskDiv{
         margin-top: 15%;
-     }
+     
+}
      .input-newtask-item {
         width: 88%;
     }

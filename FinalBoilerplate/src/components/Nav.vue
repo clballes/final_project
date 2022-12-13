@@ -1,40 +1,48 @@
 <template>
-  <nav>
-    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    <router-link to="/">
-      <img src="../assets/logo_tofotask_bwhite.webp" alt="logo-tasks" class="navbar-img">
-    </router-link>
-    <div>
-      <ul> 
-        <li class="log-out-welcome">
-          <p>Welcome, user</p>
-        </li>
-        <div class="user-nav" :class="showNavMenu ? 'active' : 'false'">
-          <li>
-            <button @click="signOut" class="button">
-              <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="icon-font" />
-            </button>
-          </li>
-          <li>
-            <router-link to="/account">
-              <font-awesome-icon icon="fa-solid fa-user" class="icon-font" />
-            </router-link>
-          </li>
-        </div>
+    <nav>
+      <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
+      <router-link to="/">
+        <img src="../assets/logo_tofotask_bwhite.webp" alt="logo-tasks" class="navbar-img">
+      </router-link>
+      <router-link to="/">
+        Home
+      </router-link>
+      <router-link to="/">
+        Search a plugin
+      </router-link>
+      
+          <div>
+        <ul>
+          <div class="user-nav" :class="showNavMenu ? 'active' : 'false'">
+            <li class="button-icon-nav">
+              <button @click="signOut" class="button"> 
+                <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="icon-font" />
+              </button>
+            </li>
+            <li class="button-icon-nav1">
+              <router-link to="/account">
+                <font-awesome-icon icon="fa-solid fa-user" class="icon-font" />
+              </router-link>
+            </li>
+            <div class="nav-title">
+              <li>Log Out</li>
+              <li>My Account</li>
+            </div>
 
-        <div class="hamburguer" @click="hamburguerMenu"
-        :class="moveHamburger ? 'active' : 'inactive'">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-      </ul>
-    </div>
-  </nav>
+          </div>
+          <div class="hamburguer" @click="hamburguerMenu"
+          :class="moveHamburger ? 'active' : 'inactive'">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+          </div>
+        </ul>
+      </div>
+    </nav>
 </template>
 
 <script setup>
-// import PersonalRouter from "./PersonalRouter.vue";
+import PersonalRouter from "./PersonalRouter.vue";
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
@@ -80,26 +88,32 @@ const hamburguerMenu = async () => {
 
 <style>
 .navbar-img {
-  width: 30px;
+  width: 35px;
+  margin: 30% 0% 30% 90%;
+}
+#searchbar{
+  padding: 3%;
 }
 .user-nav{
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
-
+.nav-title{
+  display: none;
+}
 a{
   text-decoration: none;
 }
-
 nav {
-  background-color: white;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  position: sticky;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    background-color: #E4572E;
+  box-shadow: 0 0 5px #515151;
 }
 
 nav ul {
@@ -111,12 +125,15 @@ nav ul {
 }
 .icon-font{
   height: 20px;
-  widows: 20px;
-  color: #C17817;
+  width: 20px;
+  color: white;
   cursor: pointer;
 }
+.button-icon-nav{
+  margin-right: 50%;
+}
 button{
-  background-color: white;
+  background-color: transparent;
   border: none;
 }
 
@@ -138,41 +155,50 @@ button{
     .nav{
         display: flex;
         justify-content: space-between;
-    }
+      }
     .hamburguer{
-      display: block;
-    } 
+        display: block;
+      } 
     .hamburguer.active .bar:nth-child(2){
-    opacity: 0;
-    }
+      opacity: 0;
+      }
     .hamburguer.active .bar:nth-child(1){
-    transform: translateY(8px) rotate(45deg);
-    }
+      transform: translateY(8px) rotate(45deg);
+      }
 
     .hamburguer.active .bar:nth-child(3){
-    transform: translateY(-8px) rotate(-45deg);
-    }
-    .user-nav.active{
-        left: 0;
-        top: 100px;
-        padding-left: 60px;
-        display: flex;
-        align-items: flex-start;
-    }
+      transform: translateY(-8px) rotate(-45deg);
+      }
     .user-nav{
         position: fixed;
         top: -100%;
-        background-color: rosybrown;
+        background-color: rgb(163, 163, 163);
         flex-direction: column;
         width: 100%;
         text-align: center;
         transition: 0.3s;
     }
     .user-nav.active{
-        left: 0;
+      left: 0;
+      padding: 20px;
+      top: 100px;
+      width: 91%;
+      display: flex;
+      align-items: flex-end;
+    }
+    .nav-title{
+       display:block;
     }
     ul{
         padding-inline-start: 0px;
+    }
+    .button-icon-nav
+    {
+      margin-right: 50%;
+      display: none;
+    }
+    .button{
+      background-color: transparent;
     }
 }
 </style>

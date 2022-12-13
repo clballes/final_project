@@ -13,7 +13,8 @@
                 @emitTask="getTasks"
       />
     </div>
-  </div>
+    <Footer />
+</div>
 </template>
 
 <script setup>
@@ -24,6 +25,7 @@ import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 import { useUserStore } from "../stores/user";
+import Footer from '../components/Footer.vue';
 
 const taskStore = useTaskStore();
 

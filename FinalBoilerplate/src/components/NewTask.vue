@@ -1,20 +1,32 @@
 <template>
-    <div class="newTaskDiv">
-        <h1>Add a new Task</h1>
-        <h2>Start organizing your time</h2>
-        <div v-if="showErrorMessage">
-            <p class="error-text">{{ showErrorMessage }}</p>
-        </div>
-        <div class="argumentTask">
-            <div class="input-field-newtask">
-                <input type="text" placeholder="Add a Task Title" class="input-newtask-item" v-model="name">
-            </div>
-            <div class="input-field-newtask">
-                <input class="input-newtask-item" type="text" placeholder="Add a Task Description" v-model="description" >
-            </div>
-             <button @click="addTask" class="button-sign" >Add</button>
-        </div>
+    <div class="background-image-photo">  
+        <h1>Start searching the most famous plugins</h1>    
     </div>
+    <hr id="hr-task" />
+    <h2 id="h2-task">Supported by</h2>
+    <div class="daw">
+        <img src="../assets/2015_Logic_Pro_Logo.png" alt="logic" class="icon-daw">
+        <img src="../assets/ableton.png" alt="ableton" class="icon-daw">
+        <img src="../assets/reaper.webp" alt="reaper" class="icon-daw2">
+        <img src="../assets/PT2019.png" alt="protools" class="icon-daw">
+        <img src="../assets/cubase.png" alt="cubase" class="icon-daw">
+    </div>
+            <div class="newTaskDiv">
+                <h1>Search a plugin</h1>
+                <h2>Start making your songs</h2>
+                <div v-if="showErrorMessage">
+                    <p class="error-text">{{ showErrorMessage }}</p>
+                </div>
+                <div class="argumentTask">
+                    <div class="input-field-newtask">
+                        <input type="text" placeholder="Add a Plugin Title" class="input-newtask-item" v-model="name">
+                    </div>
+                    <div class="input-field-newtask">
+                        <input class="input-newtask-item" type="text" placeholder="Add a Plugin Description" v-model="description" >
+                    </div>
+                     <button @click="addTask" class="button-sign">Add</button>
+                </div>
+            </div>
 </template>
 
 <script setup>
@@ -48,5 +60,56 @@ const addTask = async () => {
 
 </script>
 
-<style></style>
+<style>
+#h2-task{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 3%;
+}
+#hr-task{
+    border: solid 1px black;
+}
+.icon-daw{
+    height: 3%;
+    width: 6%;
+    border-radius: 8px;
+    background-color: white;
+}
+.icon-daw2{
+    height: 3%;
+    width: 10%;
+}
+.daw{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+.background-image-photo{
+    background-image: url("../assets/studio-modified.jpg");
+    width: 100%;
+    height: 750px;
+}
+.background-image-photo h1{
+    font-size: 65px;
+    width: 36%;
+    padding: 2%;
+    position: relative;
+    margin-left: 3%;
+    top: 250px;
+    color: #0000ff;
+    text-align: left;
+    background-color: #ffffff8c;
+}
+#plugin-photo{
+    width: 50%;
+    height: 50%;
+    border-radius: 4px;
+    cursor: none;
+}
+.position-task{
+
+}
+
+</style>
   

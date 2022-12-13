@@ -8,16 +8,15 @@ export const useUserStore = defineStore("user", {
   actions: {
     async fetchUser() {
       const user = await supabase.auth.user();
-      if(user) {
+      if(user) {  
         this.user = user;
-        /* const { data: profile } = await supabase
+        const { data: profile } = await supabase
         .from('profiles')
         .select()
         .match({ user_id: this.user.id })
-
         if (profile) this.profile = profile[0];
         console.log('user in store: ', this.user);
-        console.log('profile in store: ', this.profile); */
+        console.log('profile in store: ', this.profile);
       }
     },
 
@@ -29,14 +28,13 @@ export const useUserStore = defineStore("user", {
       if (error) throw error;
       if (user) {
         this.user = user;
-        /* console.log(this.user);
-
+        console.log(this.user);
         const { data: profile } = await supabase.from('profiles').insert([
           {
             user_id: this.user.id,
-            username: email
+            username: email,
           }
-        ]) */
+        ])
       }
     },
 
@@ -51,14 +49,21 @@ export const useUserStore = defineStore("user", {
       if (error) throw error;
       if (user) {
         this.user = user;
-        /* const { data: profile } = await supabase
+        const { data: profile } = await supabase
         .from('profiles')
         .select()
         .match({ user_id: this.user.id })
-
         if (profile) this.profile = profile[0];
-        console.log('profile in store: ', profile); */
+        console.log('profile in store: ', profile);
       }
+    },
+    async updateAvatar(avatar_url){
+      const { user, error } = await supabase.from("profiles").update([
+          {
+            avatar_url: avatar_url,
+          },
+        ])
+        .match({ user_id: this.user.id })
     },
 
     async signOut(){
