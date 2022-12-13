@@ -43,8 +43,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   align-items: flex-start;
   margin-left: 10%;
 }
-h4, h3, p{
-  margin-top: 15% !important;
+.services h4, .footer h3, .footer p, .rights h4{
+  margin-top: 15%;
 }
 .rights{
   display: flex;

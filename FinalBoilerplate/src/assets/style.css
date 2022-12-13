@@ -11,9 +11,14 @@
     --colorBlue: #0000ff;
     --colorOrange: #E4572E;
     --fontSize-sm: 16px;
-    --fontFamily: 'Arial, Helvetica, sans-serif, Roboto';
-    --fontTitle: 'Arial, Roboto';
-    --fontBody: 'Helvetica, Roboto';
+    /* --fontFamily: 'Arial, Helvetica';
+    --fontTitle: 'Helvetica';
+    --fontBody: 'Helvetica'; */
+
+    --fontFamily: sans-serif, 'Roboto, Oswald, Lato';
+    --fontTitle: 'Roboto';
+    --fontBody: 'Roboto';
+    --h1: 'Lato';
 }
 
 /* Newtask component styles */

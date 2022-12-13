@@ -65,6 +65,30 @@ export const useUserStore = defineStore("user", {
         ])
         .match({ user_id: this.user.id })
     },
+    async updateEmail(email){
+      const { user, error } = await supabase.from("profiles").update([
+          {
+            email: email,
+          },
+        ])
+        .match({ user_id: this.user.id })
+    },
+    async updateUserName(username){
+      const { user, error } = await supabase.from("profiles").update([
+          {
+            username: username,
+          },
+        ])
+        .match({ user_id: this.user.id })
+    },  
+    async updateDescription(description){
+      const { user, error } = await supabase.from("profiles").update([
+          {
+            description: description,
+          },
+        ])
+        .match({ user_id: this.user.id })
+    },  
 
     async signOut(){
       const { error } = await supabase.auth.signOut();

@@ -19,12 +19,12 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faPianoKeyboard } from "@fortawesome/free-solid-svg-icons";
+// import { faPiano } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
-library.add(faTrash, faRightFromBracket, faPenToSquare, faUser, faSquareCheck, faEye, faTwitter, faFacebook, faInstagram, faEnvelope, faHeart, faPianoKeyboard);
+library.add(faTrash, faRightFromBracket, faPenToSquare, faUser, faSquareCheck, faEye, faTwitter, faFacebook, faInstagram, faEnvelope, faHeart);
 
 const app = createApp(App);
 

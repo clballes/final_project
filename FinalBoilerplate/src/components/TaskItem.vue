@@ -27,7 +27,7 @@
                 </button>
             </div>
             <div class="icon-instrument">
-                <font-awesome-icon icon="fa-solid fa-piano-keyboard" />
+                <font-awesome-icon icon="fa-solid fa-piano" />
             </div>
              <form 
                 @submit.prevent="onSubmit" 
