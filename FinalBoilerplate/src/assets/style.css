@@ -29,7 +29,7 @@
     margin-bottom: 20px;
     margin-top: 5%;
     z-index: 1;
-    /* background-image: url("../assets/studio.jpg"); */
+     /* background-image: url("../assets/studio.jpg"); */
 }
 .argumentTask{
     gap: 10px;
@@ -85,9 +85,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
-    /* background-image: url("../assets/studio-modified.jpg"); */
-    /* background-repeat: no-repeat; */
-
 }
 /* TaskItem style */
 .container{
@@ -170,6 +167,12 @@
 }
 
 /* SignIn & Sign Up Component Style*/
+#signup-header{
+    height: 15%;
+}
+#form-signup{
+    height: 50%;
+}
 .logo-icon{
     height: 50px;
     width: 50px;
@@ -186,12 +189,13 @@
     background-size: cover;
     height: 800px;
     position: fixed;
+    background-image: url("../assets/portada_music_b&w.jpg");
 }
 .header, .form-sign{
         padding: 0% 2% 0% 2%;
         background-color: #e4582ed5;
         width: 30%;
-        height: 40%;
+        height: 43%;
         position: relative;
         left: 10%;
 }
@@ -247,7 +251,7 @@ hr{
 .header-title {
     font-size: 35px;
     color: var(--colorWhite);
-    margin: 5% 0% 2% 5%;
+    margin: 10% 0% 2% 5%;
 }
 .header-description{
     display: flex;
@@ -259,8 +263,15 @@ hr{
 .header-subtitle{
     text-align: center;
     font-size: 20px;
+    margin-left: 5%;
 }
 /* Form style SignIn & SignUp */
+#signup-header{
+    height: 25%;
+}
+#form-signup{
+    height: 50%;
+}
 .div-form-sign{
     display: flex;
     flex-direction: column;
@@ -284,13 +295,12 @@ hr{
     text-decoration: none;
     color: var(--colorWhite);
     font-weight: 600;
-
 }
 .div-form-sign p{
     margin-top: 15%;
     position: relative;
-    bottom: 530px;
-    left: 65%;
+    bottom: 550px;
+    left: 68%;
     display: flex;
     color: white;
     font-weight: 500;
@@ -331,6 +341,12 @@ hr{
 /* MEDIA QUERY MOBILE SIGNIN & SIGNUP DESIGN*/
 @media  (max-width:420px){
     /* MOBILE DESIGN FOR SIGNIN & SIGNUP DESIGN */
+    #signup-link{
+        bottom: 520px;
+    }
+    #header-title-signup{
+        margin-top: 30%;
+    }
     .header-title {
         font-size: 25px;
         text-align: center;
@@ -362,6 +378,7 @@ hr{
     .div-form-sign p{
         bottom: 445px;
         left: 23%;
+        margin-right: 8%;
     }
     .form-input-email, .form-input-password, .form-input-confirm-password{
         width: 80%;

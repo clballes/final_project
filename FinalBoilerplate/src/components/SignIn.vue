@@ -57,7 +57,7 @@
 
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
-// import { supabase } from '../supabase'
+import { supabase } from '../supabase'
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";

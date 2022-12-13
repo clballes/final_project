@@ -1,13 +1,13 @@
 <template>
   <div class="container-sign">
-    <div class="header">
+    <div class="header" id="signup-header">
       <div class="header-description">
-        <h3 class="header-title">Register to ToDo App</h3>
+        <h3 class="header-title" id="header-title-signup">Register to ToDo App</h3>
         <p class="header-subtitle">Start organizing your tasks!</p>
       </div>
     </div>
 
-    <form @submit.prevent="signUp" class="form-sign">
+    <form @submit.prevent="signUp" class="form-sign" id="form-signup">
       <div class="div-form-sign">
         <div class="form-input-email">
           <label class="input-field-label">E-mail</label>
@@ -43,7 +43,7 @@
           />
         </div>
         <button class="button-sign" type="submit">Sign Up</button>
-        <p>
+        <p id="signup-link">
           Have an account?
           <PersonalRouter
             :route="route"
@@ -102,4 +102,5 @@ const signUp = async () => {
 };
 </script>
 
-<style></style>
+<style>
+</style>
