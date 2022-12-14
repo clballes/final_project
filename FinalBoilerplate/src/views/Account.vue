@@ -5,12 +5,12 @@
       <div class="all-part1">
         <h2>Choose your Avatar</h2>
         <div class="flex-avatar">
-          <img @click="showAvatar" :src="avatar_url ? avatar_url : '../assets/profile_blank1.png'" alt="Profile picture">
+          <img @click="showAvatar" :src="avatar_url ? avatar_url : '/src/assets/profile_blank1.png'" alt="Profile picture">
           <div v-show="showAvatarIcon" class="avatar-icons">
-            <img src="../assets/avatar1.png" alt="avatar1" class="icon-avatar" id="icon1" @click="chooseAvatar">
-            <img src="../assets/avatar2.png" alt="avatar2" class="icon-avatar" id="icon2" @click="chooseAvatar1">
-            <img src="../assets/avatar3.png" alt="avatar3" class="icon-avatar" id="icon3" @click="chooseAvatar2">
-            <img src="../assets/avatar4.png" alt="avatar4" class="icon-avatar" id="icon4" @click="chooseAvatar3">
+            <img src="/src/assets/avatar1.png" alt="avatar1" class="icon-avatar" id="icon1" @click="chooseAvatar">
+            <img src="/src/assets/avatar2.png" alt="avatar2" class="icon-avatar" id="icon2" @click="chooseAvatar1">
+            <img src="/src/assets/avatar3.png" alt="avatar3" class="icon-avatar" id="icon3" @click="chooseAvatar2">
+            <img src="/src/assets/avatar4.png" alt="avatar4" class="icon-avatar" id="icon4" @click="chooseAvatar3">
           </div>
         </div>
         <div class="card-user">
@@ -119,19 +119,19 @@ let showAvatar = async() => {
 
 //Choose from different avatars
 const chooseAvatar = async () => {
-  avatar_url.value = '../assets/avatar1.png';
+  avatar_url.value = '/src/assets/avatar1.png';
   await userStore.updateAvatar(avatar_url.value);
 };
 const chooseAvatar1 = async () => {
-  avatar_url.value = '../assets/avatar2.png';
+  avatar_url.value = '/src/assets/avatar2.png';
   await userStore.updateAvatar(avatar_url.value);
 };
 const chooseAvatar2 = async () => {
-  avatar_url.value = '../assets/avatar3.png';
+  avatar_url.value = '/src/assets/avatar3.png';
   await userStore.updateAvatar(avatar_url.value);
 };
 const chooseAvatar3 = async () => {
-  avatar_url.value = '../assets/avatar4.png';
+  avatar_url.value = '/src/assets/avatar4.png';
   await userStore.updateAvatar(avatar_url.value);
 };
 const onSubmitEmail = async () => {
