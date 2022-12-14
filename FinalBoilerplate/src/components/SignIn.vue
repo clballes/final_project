@@ -33,8 +33,16 @@
                   </div>
                   <div class="control">
                     <button class="button-eye" @click.prevent="toggleShow">
-                      <span class="icon">
-                      <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"></i></span>
+                        <div class="icon">
+                          <div class="fas">
+                            <span v-if="showPassword">
+                              <font-awesome-icon icon="fa-solid fa-eye-slash" />
+                            </span>
+                            <span v-else>
+                              <font-awesome-icon icon="fa-solid fa-eye" />
+                            </span>
+                          </div>
+                        </div>
                     </button>
                   </div>
               </div>
@@ -60,8 +68,9 @@ import PersonalRouter from "./PersonalRouter.vue";
 import { supabase } from '../supabase'
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useUserStore } from "../stores/user";
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
 
 

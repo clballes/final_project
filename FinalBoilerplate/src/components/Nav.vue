@@ -4,30 +4,37 @@
       <router-link to="/">
         <img src="../assets/logo_tofotask_bwhite.webp" alt="logo-tasks" class="navbar-img">
       </router-link>
-      <router-link to="/">
-        Home
-      </router-link>
-      <router-link to="/">
-        Search a plugin
-      </router-link>
-      
+      <div id="link-router">
+        <router-link to="/">
+          Home
+        </router-link>
+        <router-link to="/">
+          Search a plugin
+        </router-link>
+      </div>
           <div>
-        <ul>
           <div class="user-nav" :class="showNavMenu ? 'active' : 'false'">
-            <li class="button-icon-nav">
+            <div class="button-icon-nav">
               <button @click="signOut" class="button"> 
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="icon-font" />
               </button>
-            </li>
-            <li class="button-icon-nav1">
+            </div>
+            <div class="button-icon-nav1">
               <router-link to="/account">
                 <font-awesome-icon icon="fa-solid fa-user" class="icon-font" />
               </router-link>
-            </li>
-            <div class="nav-title">
-              <li>Log Out</li>
-              <li>My Account</li>
             </div>
+           <ul class="nav-title">
+              <router-link to="/">
+                <li>Home</li>
+              </router-link>
+              <router-link to="/auth/login">
+                <li>Log Out</li>
+              </router-link>
+              <router-link to="/account">
+                <li>My Account</li>
+              </router-link>
+           </ul> 
 
           </div>
           <div class="hamburguer" @click="hamburguerMenu"
@@ -36,8 +43,7 @@
               <span class="bar"></span>
               <span class="bar"></span>
           </div>
-        </ul>
-      </div>
+        </div>
     </nav>
 </template>
 
@@ -111,9 +117,10 @@ nav {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     background-color: #E4572E;
   box-shadow: 0 0 5px #515151;
+  z-index: 10;
 }
 
 nav ul {
@@ -141,6 +148,7 @@ button{
 .hamburguer{
     display: none;
     cursor: pointer;
+    margin-right: 20px;
 }
 .bar{
     display: block;
@@ -149,12 +157,27 @@ button{
     margin: 5px auto;
     -webkit-transition: all 0.3 ease-in-out;
     transition: all 0.3 ease-in-out;
-    background-color:#6b708d96;
+    background-color:#ffffffee;
 }
 @media (max-width: 420px){
     .nav{
         display: flex;
         justify-content: space-between;
+      }
+      #link-router{
+        display: none;
+      }
+      .nav-title li{
+        margin-top: 3%;
+        color: #0000ffe8;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-weight: 400;
+      }
+      .nav-title li:hover{
+        color: #E4572E;;
+      }
+      .button-icon-nav1{
+        display: none;
       }
     .hamburguer{
         display: block;
@@ -172,7 +195,7 @@ button{
     .user-nav{
         position: fixed;
         top: -100%;
-        background-color: rgb(163, 163, 163);
+        background-color: rgb(255, 255, 255);
         flex-direction: column;
         width: 100%;
         text-align: center;
@@ -181,10 +204,11 @@ button{
     .user-nav.active{
       left: 0;
       padding: 20px;
-      top: 100px;
+      top: 67px;
       width: 91%;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      /* position: sticky; */
     }
     .nav-title{
        display:block;

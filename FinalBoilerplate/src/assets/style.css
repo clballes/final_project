@@ -329,6 +329,7 @@ hr{
     cursor: pointer;
     margin-top: 10px;
     border: none;
+    background-color: white;
     border-radius: 0px 8px 8px 0px;
 }
 .show-hide-password{
@@ -384,9 +385,8 @@ hr{
         width: 80%;
     }
     .field-has-addons{
-        width: 80%;
-    
-}
+        width: 80%;    
+    }
     /* MOBILE DESIGN FOR TASKITEMS */
     .homeTask{
         margin: auto;
@@ -395,17 +395,13 @@ hr{
         flex-direction: column;
         flex-wrap: wrap;
         align-items: flex-start;
-    
-}
+    }
     .todo-item{
         width: 100%;
-    
-}
-     /* MOBILE DESIGN FOR TASKITEMS */
+    }
      .newTaskDiv{
-        margin-top: 15%;
-     
-}
+        margin-top: 15%;   
+    }
      .input-newtask-item {
         width: 88%;
     }
@@ -415,6 +411,20 @@ hr{
     }
     .argumentTask{
         width: 80%;
+    }
+    /* MOBILE DESIGN FOR ADDTASK */
+    .background-image-photo h1 {
+        width: 80%;
+        margin-left: 5% !important;
+    }
+    #h2-task{
+        margin: 10% 0% 10% 0%;
+    }
+    #hr-task{
+        margin-top: 10%;
+    }
+    .icon-daw{
+        width: 15%;
     }
 }
 

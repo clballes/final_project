@@ -76,5 +76,13 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   width: 30px;
   height: 30px;
 }
+@media  (max-width:420px){
+  .icon-footer, .footer-1{
+    margin: 8% 0%;
+  }
+  .rights h4{
+    margin-bottom: 8%;
+  }
+}
 
 </style>

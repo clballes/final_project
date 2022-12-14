@@ -11,7 +11,10 @@
         <img src="../assets/PT2019.png" alt="protools" class="icon-daw">
         <img src="../assets/cubase.png" alt="cubase" class="icon-daw">
     </div>
+    <hr id="hr-task" />
             <div class="newTaskDiv">
+                <form action="
+"></form>
                 <h1>Search a plugin</h1>
                 <h2>Start making your songs</h2>
                 <div v-if="showErrorMessage">
@@ -106,9 +109,6 @@ const addTask = async () => {
     height: 50%;
     border-radius: 4px;
     cursor: none;
-}
-.position-task{
-
 }
 
 </style>

@@ -1,0 +1,25 @@
+[
+    {
+       "instrument": "kick",
+       "effect": "punchy",
+       "plugin": "808"
+    },
+    {
+        "instrument": "kick",
+        "effect": "melodic",
+        "plugin": "T-REX Drums"
+
+     },
+    {
+        "instrument": "kick",
+        "effect": "analog",
+        "plugin": "Crash 707"
+
+     },
+     {
+        "instrument": "kick",
+        "effect": "vintage",
+        "plugin": "BuumClap"
+
+     }
+]

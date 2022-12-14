@@ -14,6 +14,7 @@
       />
     </div>
     <Footer />
+    <Plugin />
 </div>
 </template>
 
@@ -26,6 +27,7 @@ import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 import { useUserStore } from "../stores/user";
 import Footer from '../components/Footer.vue';
+import Plugin from '../components/Plugin.vue';
 
 const taskStore = useTaskStore();
 
