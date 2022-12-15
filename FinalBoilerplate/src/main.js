@@ -9,7 +9,7 @@ import './assets/style.css';
 // ICON LIBRARY FONTAWESOME
 /* add fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faEyeSlash, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faEyeSlash, faTrash, faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTrash, faRightFromBracket, faPenToSquare, faUser, faSquareCheck, faEye, faTwitter, faFacebook, faInstagram, faEnvelope, faHeart, faSearch, faEye, faEyeSlash);
+library.add(faTrash, faRightFromBracket, faLock, faUnlock, faPenToSquare, faUser, faSquareCheck, faEye, faTwitter, faFacebook, faInstagram, faEnvelope, faHeart, faSearch, faEye, faEyeSlash);
 
 const app = createApp(App);
 

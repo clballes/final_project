@@ -1,21 +1,48 @@
 <template>
   <div class="wrapper">
     <Nav />
-
-    <div class="content"> 
-      <!-- <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link> -->
+    <!-- LANDING PAGE ITEMS -->
+    <div class="background-image-photo">  
+        <h1>Start searching the most famous plugins</h1>    
     </div>
-    <NewTask @emitTask ="getTasks" />
-    <!-- <h1>Tasks:</h1> -->
-    <div class="homeTask">
-      <TaskItem v-for="task in tasks" :key="task.id" :task="task"
-                @emitTask="getTasks"
-      />
+    <hr id="hr-task" />
+    <h2 id="h2-task">Supported by</h2>
+    <div class="daw">
+        <img src="../assets/2015_Logic_Pro_Logo.png" alt="logic" class="icon-daw">
+        <img src="../assets/ableton.png" alt="ableton" class="icon-daw">
+        <img src="../assets/reaper.webp" alt="reaper" class="icon-daw2">
+        <img src="../assets/PT2019.png" alt="protools" class="icon-daw">
+        <img src="../assets/cubase.png" alt="cubase" class="icon-daw">
     </div>
-    <Footer />
-    <Plugin />
-</div>
+    <hr id="hr-task" />
+    <!-- SHOW DIFFERENTS VIEWS, SEARCHBAR AND OWN TABLE -->
+    <div v-if="showView">
+            <!-- OWN PANEL UPDLOAD YOUR OWNN PLUGINS -->
+            <div class="flex-lock">
+              <button class="btn-lock-h3">
+              <h3>Search and save plugins from others</h3>
+              <font-awesome-icon @click="toggleShow" icon="fa-solid fa-lock" class="icon-view" />
+            </button>
+            </div>
+            <NewTask @emitTask ="getTasks" />
+            <div class="homeTask">
+              <TaskItem v-for="task in tasks" :key="task.id" :task="task"
+                        @emitTask="getTasks"/>
+            </div>
+    </div>
+    <div v-else>
+            <!-- SEARCHBAR BETWEEN DIFFERENTS PLUGINS -->
+          <div class="flex-lock">
+            <button class="btn-lock-h3">
+              <h3>Upload your plugins in your panel</h3>
+              <font-awesome-icon @click="toggleShow" icon="fa-solid fa-unlock" class="icon-view"/>
+            </button>
+          </div>
+          <SearchPlugin />
+    </div>  
+      
+  </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -27,7 +54,15 @@ import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 import { useUserStore } from "../stores/user";
 import Footer from '../components/Footer.vue';
-import Plugin from '../components/Plugin.vue';
+import Tag from '../components/Tag.vue';
+import AddPlugin from '../components/AddPlugin.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import SearchPlugin from '../components/SearchPlugin.vue';
+
+const showView = ref(false);
+const toggleShow = (() => {
+  showView.value = !showView.value;
+});
 
 const taskStore = useTaskStore();
 
@@ -39,6 +74,7 @@ const getTasks = async() => {
   tasks.value = await taskStore.fetchTasks();
 };
 getTasks();
+
 </script>
 
 <style></style>

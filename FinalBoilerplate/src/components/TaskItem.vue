@@ -1,90 +1,143 @@
 <template>
-<div class="todo-item">
+  <div>
+    <input id="input-searchbar" 
+    type="text" 
+    v-model="input" 
+    placeholder="Search plugins..." 
+    />
+  <div  v-for="task_tag in filteredList()" :key="task_tag">
+    <p>{{ task_tag }}</p>
+  </div>
+
+
+  <div class="item error" v-if="input&&!filteredList().length">
+     <p>No results found!</p>
+  </div>
+  </div>
+  <div class="todo-item">
     <div class="container">
-        <div class="task-card">
-            <div>
-                <div v-if="doneTask" class="doneText">
-                    <h3>{{task.title}}</h3>
-                    <p>{{task.description}}</p>
-                </div>
-                <div v-else class="doneText2">
-                    <h3>{{task.title}}</h3>
-                    <p>{{task.description}}</p>
-                </div>
-            </div>
-            <div class="button-Task-Div">
-                <button @click="(editTask = !editTask)" class="buttonTask">
-                    <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-                </button>
-                <button @click="checkTask" class="buttonTask">
-                    <font-awesome-icon icon="fa-solid fa-square-check" />
-                </button>
-                <button @click="deleteTask" class="buttonTask">
-                    <font-awesome-icon icon="fa-solid fa-trash" />
-                </button>
-                <button class="buttonTask">
-                    <font-awesome-icon icon="fa-solid fa-heart" />
-                </button>
-            </div>
-            <div class="icon-instrument">
-                <font-awesome-icon icon="fa-solid fa-piano" />
-            </div>
-             <form 
-                @submit.prevent="onSubmit" 
-                v-show="!editTask" 
-                class="form-taskitem">
-                    <input 
-                        type="text" 
-                        placeholder="New title task"
-                        class="input-taskitem"
-                        v-model="name"/>
-                    <input 
-                        type="text" 
-                        placeholder="New description task"
-                        class="input-taskitem"
-                        v-model="description"/>
-                    <input type="submit" value="Change" class="submitButton"/>
-             </form>
+      <div v-if="doneTask" class="width-div">
+        <div class="taskitem-tag">
+          <h4 v-for="(task_tag, index) in tasks_tags[0]" :key="index" class="taskitem-tag">
+            {{ task_tag }}
+          </h4>
         </div>
+      </div>
+      <div v-else class="width-div">
+        <div class="taskitem-tag">
+          <h4 v-for="(task_tag, index) in tasks_tags[0]" :key="index">
+            {{ task_tag }}
+          </h4>
+        </div>
+      </div>
+
+      <div class="task-card">
+        <div>
+          <div v-if="doneTask" class="doneText">
+              <h3>{{ task.title }}</h3>
+              <p>{{ task.description }}</p>
+              <p>{{ task.plugin_url }}</p>   
+          </div>
+          <div v-else class="doneText2">
+              <h3>{{ task.title }}</h3>
+              <p>{{ task.description }}</p>
+              <p>{{ task.plugin_url }}</p>
+          </div>
+        </div>
+        <div class="button-Task-Div">
+          <button @click="editTask = !editTask" class="buttonTask">
+            <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+          </button>
+          <button @click="checkTask" class="buttonTask">
+            <font-awesome-icon icon="fa-solid fa-square-check" />
+          </button>
+          <button @click="deleteTask" class="buttonTask">
+            <font-awesome-icon icon="fa-solid fa-trash" />
+          </button>
+          <button class="buttonTask">
+            <font-awesome-icon icon="fa-solid fa-heart" />
+          </button>
+        </div>
+        <form
+          @submit.prevent="onSubmit"
+          v-show="!editTask"
+          class="form-taskitem"
+        >
+          <input
+            type="text"
+            placeholder="New title task"
+            class="input-taskitem"
+            v-model="name"
+          />
+          <input
+            type="text"
+            placeholder="New description task"
+            class="input-taskitem"
+            v-model="description"
+          />
+          <input type="submit" value="Change" class="submitButton" />
+        </form>
+      </div>
     </div>
-</div>
-</template> 
+  </div>
+</template>
 
 <script setup>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { ref, defineEmits } from 'vue';
-import { useTaskStore } from '../stores/task';
-import { supabase } from '../supabase';
+import { ref, defineEmits, reactive } from "vue";
+import { useTaskStore } from "../stores/task";
+import { supabase } from "../supabase";
 
-const emit = defineEmits(['emitTask'])
+const emit = defineEmits(["emitTask"]);
 const taskStore = useTaskStore();
 
 const props = defineProps({
-    task: Object,
+  task: Object,
 });
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
-const deleteTask = async() => {
-    await taskStore.deleteTask(props.task.id);
-    emit("emitTask");
+const deleteTask = async () => {
+  await taskStore.deleteTask(props.task.id);
+  emit("emitTask");
 };
+
 //Cuando acabamos una tarea, subrayar las letras de title y paragrafo
 const doneTask = ref(props.task.is_complete);
 
 const checkTask = async () => {
-        doneTask.value = !doneTask.value;
-        await taskStore.updateDoneTask(props.task.is_complete, props.task.id);
-        emit("emitTask");
+  doneTask.value = !doneTask.value;
+  await taskStore.updateDoneTask(props.task.is_complete, props.task.id);
+  emit("emitTask");
 };
 //Función para actualizar el name y la descripción, cuando picamos el button edit
 const name = ref(props.task.title);
 const description = ref(props.task.description);
+const plugin_url = ref(props.task.plugin_url);
+const tasks_tags = ref([props.task.tasks_tags]);
 const editTask = ref(true);
 
 const onSubmit = async () => {
-    await taskStore.updateTask(name.value, description.value, props.task.id);
-    emit("emitTask");
+  await taskStore.updateTask(
+    name.value,
+    description.value,
+    plugin_url.value,
+    tasks_tags.value,
+    props.task.id
+  );
+  emit("emitTask"); 
 };
+
+//Supabase filtering tags
+let tasksTagItems = ref[('')];
+
+let input = ref("");
+function filteredList() {
+  tasksTagItems = tasks_tags[0];
+  console.log(tasksTagItems.value);
+  return tasks_tags.value.filter((task_tag) =>
+  task_tag[0].toLowerCase().includes(input.value.toLowerCase())
+  );
+}
 </script>
 
 <style>

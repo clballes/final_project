@@ -5,8 +5,24 @@ import { useUserStore } from "./user";
 export const useTaskStore = defineStore("tasks", {
   state: () => ({
     tasks: null,
+    temporalTags: null,
   }),
   actions: {
+    changeTempTask(param) { 
+      this.temporalTags = param;
+    },
+    
+    async fetchTasksTags(tasks_tags) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .select('tasks_tags[]')
+        .order("id", { ascending: false });
+        this.tasks_tags = tasks_tags;
+      // console.log(JSON.stringify(data, null, 2))
+      // console.log(tasks_tags);
+      return this.tasks_tags;
+    },
+
     async fetchTasks() {
       const { data: tasks } = await supabase
         .from("tasks")
@@ -15,21 +31,25 @@ export const useTaskStore = defineStore("tasks", {
       this.tasks = tasks;
       return this.tasks;
     },
-    async addTask(title, description) {
+    async addTask(title, description, plugin_url, tasks_tags) {
       const { data, error } = await supabase.from("tasks").insert([
         {
           user_id: useUserStore().user.id,
           title: title,
           is_complete: false,
           description: description,
+          plugin_url: plugin_url,
+          tasks_tags: tasks_tags,
         },
       ]);
     },
-    async updateTask(title, description, id) {
+    async updateTask(title, description, plugin_url, tasks_tags, id) {
       const { data, error } = await supabase.from("tasks").update([
           {
             title: title,
             description: description,
+            plugin_url: plugin_url,
+            tasks_tags: tasks_tags,  
           },
         ])
       .match({
