@@ -20,8 +20,15 @@
                 <div class="div-tag-form">
                     <div class="input-field-newtask">
                             <Tag />
-                        </div>
+                    </div>
                          <button @click="addTask" class="button-sign">Add</button>
+                </div>
+                <!-- SEARCH ABR FILTERING -->
+                <div>
+                    <input type="text" placeholder="Enter the plugin you want to search...">
+                    <h4 v-for="(task_tag, index) in tasks_tags[0]" :key="index" class="taskitem-tag">
+                        {{ task_tag }}
+                    </h4>
                 </div>
             </div>
     </div>      
@@ -48,7 +55,6 @@ const emit = defineEmits(['emitTask'])
 
 const addTask = async () => {
     tasks_tags.value = useTaskStore().temporalTags;
-    console.log(tasks_tags.value);
     if (name.value.length === 0 || description.value.length === 0 || plugin_url.value.length === 0
     || tasks_tags.value.length === 0) {
         showErrorMessage.value = true;

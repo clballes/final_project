@@ -1,19 +1,4 @@
 <template>
-  <div>
-    <input id="input-searchbar" 
-    type="text" 
-    v-model="input" 
-    placeholder="Search plugins..." 
-    />
-  <div  v-for="task_tag in filteredList()" :key="task_tag">
-    <p>{{ task_tag }}</p>
-  </div>
-
-
-  <div class="item error" v-if="input&&!filteredList().length">
-     <p>No results found!</p>
-  </div>
-  </div>
   <div class="todo-item">
     <div class="container">
       <div v-if="doneTask" class="width-div">
@@ -128,16 +113,16 @@ const onSubmit = async () => {
 };
 
 //Supabase filtering tags
-let tasksTagItems = ref[('')];
+// let tasksTagItems = ref[('')];
 
-let input = ref("");
-function filteredList() {
-  tasksTagItems = tasks_tags[0];
-  console.log(tasksTagItems.value);
-  return tasks_tags.value.filter((task_tag) =>
-  task_tag[0].toLowerCase().includes(input.value.toLowerCase())
-  );
-}
+// let input = ref("");
+// function filteredList() {
+//   tasksTagItems = tasks_tags[0];
+//   console.log(tasksTagItems.value);
+//   return tasks_tags.value.filter((task_tag) =>
+//   task_tag[0].toLowerCase().includes(input.value.toLowerCase())
+//   );
+
 </script>
 
 <style>

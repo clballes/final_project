@@ -12,17 +12,6 @@ export const useTaskStore = defineStore("tasks", {
       this.temporalTags = param;
     },
     
-    async fetchTasksTags(tasks_tags) {
-      const { data, error } = await supabase
-        .from("tasks")
-        .select('tasks_tags[]')
-        .order("id", { ascending: false });
-        this.tasks_tags = tasks_tags;
-      // console.log(JSON.stringify(data, null, 2))
-      // console.log(tasks_tags);
-      return this.tasks_tags;
-    },
-
     async fetchTasks() {
       const { data: tasks } = await supabase
         .from("tasks")

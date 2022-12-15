@@ -38,7 +38,6 @@
               <font-awesome-icon @click="toggleShow" icon="fa-solid fa-unlock" class="icon-view"/>
             </button>
           </div>
-          <SearchPlugin />
     </div>  
       
   </div>
@@ -55,9 +54,7 @@ import TaskItem from '../components/TaskItem.vue';
 import { useUserStore } from "../stores/user";
 import Footer from '../components/Footer.vue';
 import Tag from '../components/Tag.vue';
-import AddPlugin from '../components/AddPlugin.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import SearchPlugin from '../components/SearchPlugin.vue';
 
 const showView = ref(false);
 const toggleShow = (() => {

@@ -4,11 +4,9 @@
       v-model="newTag"
       type="text"
       class="input-component-tag"
-      autocomplete="off"
       @keydown.enter="addTag(newTag)"
       @keydown.prevent.tab="addTag(newTag)"
       @keydown.delete="newTag.length || removeTag(tags.length - 1)"
-      @click="moveCursor(tags)"
     />
 
     <ul class="tags" ref="tagsUl">
@@ -23,6 +21,8 @@
     </ul>
   </div>
 </template> 
+
+
 <script setup>
 import { ref, watch, nextTick, onMounted, defineEmits } from "vue";
 import { useTaskStore } from "../stores/task";
@@ -38,11 +38,6 @@ const changeTemporalTags = (param) => {
   tags.value = param.value;
   useTaskStore().changeTempTask(tags.value);
 }
-
-//move cursor to the left
-const moveCursor = (event) => {
-  tags.value.selectionEnd(2,5);
-};
 
 //add tags
 const addTag = (tag) => {

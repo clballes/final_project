@@ -8,7 +8,7 @@ function loginGoogle() {
     const { user, session, error } = supabase.auth.signIn({
         provider: 'google'
       })
-}
+};
 function logOutGoogle() {
     const { error } = supabase.auth.signOut()
-}
+};

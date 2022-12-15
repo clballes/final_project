@@ -1,6 +1,5 @@
 <template>
     <nav>
-      <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
       <router-link to="/">
         <img src="../assets/logo_tofotask_bwhite.webp" alt="logo-tasks" class="navbar-img">
       </router-link>
