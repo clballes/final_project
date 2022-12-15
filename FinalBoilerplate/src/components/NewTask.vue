@@ -23,19 +23,12 @@
                     </div>
                          <button @click="addTask" class="button-sign">Add</button>
                 </div>
-                <!-- SEARCH ABR FILTERING -->
-                <div>
-                    <input type="text" placeholder="Enter the plugin you want to search...">
-                    <h4 v-for="(task_tag, index) in tasks_tags[0]" :key="index" class="taskitem-tag">
-                        {{ task_tag }}
-                    </h4>
-                </div>
             </div>
-    </div>      
+        </div>
 </template>
 
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, defineEmits, computed } from "vue";
 import { useTaskStore } from "../stores/task"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Tag from "./Tag.vue";
@@ -78,7 +71,6 @@ const showView = ref(false);
 const toggleShow = (() => {
   showView.value = !showView.value;
 });
-
 </script>
 
 <style>
@@ -171,8 +163,6 @@ const toggleShow = (() => {
     margin-top: 2%;
     width: 100%;
     height: 20%;
-    /* display: flex;
-    justify-content: end; */
 }
 .icon-view{
     height: 30px;

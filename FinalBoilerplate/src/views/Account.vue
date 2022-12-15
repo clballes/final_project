@@ -267,6 +267,7 @@ textarea{
 .all-part1{
   padding: 4%;
   width: 100%;
+  margin-top: 5%;
 }
 .card-user{
     border-radius: 20px;

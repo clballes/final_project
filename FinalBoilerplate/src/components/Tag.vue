@@ -27,7 +27,7 @@
 import { ref, watch, nextTick, onMounted, defineEmits } from "vue";
 import { useTaskStore } from "../stores/task";
 
-const tags = ref(['hello', 'world', 'hola']);
+const tags = ref(['drums', 'guitar']);
 const newTag = ref ('');
 const tagsUl = ref(null)
 
@@ -100,7 +100,7 @@ ul {
 .input-component-tag {
   padding: 20px;
     border-radius: 8px;
-    width: 78%;
+    width: 95%;
     border: 1px solid #eee;
 }
 .delete {
