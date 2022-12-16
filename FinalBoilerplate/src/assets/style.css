@@ -22,6 +22,107 @@
 }
 
 /* Newtask component styles */
+.taskitem-tag h4{
+    background: rgb(238, 238, 238);
+    padding: 2% 3%;
+    border-radius: 4px;
+    color: #0000ff;
+    white-space: nowrap;
+    margin-bottom: 5%;
+    transition: 0.1s ease background;
+}
+.taskitem-tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.div-tag-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex-lock{
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    margin-top: 5%;
+    align-items: center;
+}
+.h3-locker{
+    margin-right: 5%;
+}
+#section-locker{
+    margin-top: 10%;
+}
+.btn-lock-h3{
+    background-color: #0000ffc1;
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#h2-task{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 3%;
+}
+#hr-task{
+    border: solid 1px black;
+}
+.icon-daw{
+    height: 3%;
+    width: 6%;
+    border-radius: 8px;
+    background-color: white;
+}
+.icon-daw2{
+    height: 3%;
+    width: 10%;
+}
+.daw{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+.background-image-photo{
+    background-image: url("../assets/studio-modified.jpg");
+    width: 100%;
+    height: 750px;
+}
+.background-image-photo h1{
+    font-size: 65px;
+    width: 36%;
+    padding: 2%;
+    position: relative;
+    margin-left: 3%;
+    top: 250px;
+    color: #0000ff;
+    text-align: left;
+    background-color: #ffffff8c;
+}
+#plugin-photo{
+    width: 50%;
+    height: 50%;
+    border-radius: 4px;
+    cursor: none;
+}
+.show-view{
+    margin-top: 2%;
+    width: 100%;
+    height: 20%;
+}
+.icon-view{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
 .newTaskDiv, .argumentTask{
     display: flex;
     flex-direction: column;
@@ -29,7 +130,6 @@
     margin-bottom: 20px;
     margin-top: 5%;
     z-index: 1;
-     /* background-image: url("../assets/studio.jpg"); */
 }
 .argumentTask{
     gap: 10px;
@@ -207,12 +307,22 @@
 }
 
 /* SignIn Button */
-.button-sign{
+#btn-add{
     background-color: #212020;
     color: white;
     border: #2c2a2a;
     padding: 2%;
     width: 13%;
+    border-radius: 8px;
+    margin-top: 20px;
+
+}
+.button-sign{
+    background-color: #212020;
+    color: white;
+    border: #2c2a2a;
+    padding: 4%;
+    width: 20%;
     border-radius: 8px;
     margin-top: 20px;
 }
@@ -416,6 +526,7 @@ hr{
     .background-image-photo h1 {
         width: 80%;
         margin-left: 5% !important;
+        font-size: 50px;
     }
     #h2-task{
         margin: 10% 0% 10% 0%;
@@ -426,6 +537,18 @@ hr{
     .icon-daw{
         width: 15%;
     }
+    .btn-lock-h3{
+        margin-left: 20%;
+        padding: 3%;
+    }
+    .div-tag-form{
+        width: 90%;
+    }
+    .input-component-tag{
+        width: 90%;
+    }
+    #btn-add{
+        padding: 3%;
+        width: 20%;
+    }
 }
-
-/*Account View */

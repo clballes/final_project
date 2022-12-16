@@ -21,7 +21,7 @@
                     <div class="input-field-newtask">
                             <Tag />
                     </div>
-                         <button @click="addTask" class="button-sign">Add</button>
+                         <button @click="addTask" id="btn-add">Add</button>
                 </div>
             </div>
         </div>
@@ -74,101 +74,5 @@ const toggleShow = (() => {
 </script>
 
 <style>
-.taskitem-tag h4{
-    background: rgb(238, 238, 238);
-    padding: 2% 3%;
-    border-radius: 4px;
-    color: #0000ff;
-    white-space: nowrap;
-    margin-bottom: 5%;
-    transition: 0.1s ease background;
-}
-.taskitem-tag {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-
-}
-.div-tag-form{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.flex-lock{
-    display: flex;
-    justify-content: flex-end;
-    width: 80%;
-    margin-top: 5%;
-    align-items: center;
-}
-.btn-lock-h3{
-    background-color: #7e7e7e;
-    color: white;
-    padding: 2%;
-    border: none;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-#h2-task{
-    font-size: 30px;
-    text-align: center;
-    margin-top: 3%;
-}
-#hr-task{
-    border: solid 1px black;
-}
-.icon-daw{
-    height: 3%;
-    width: 6%;
-    border-radius: 8px;
-    background-color: white;
-}
-.icon-daw2{
-    height: 3%;
-    width: 10%;
-}
-.daw{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 2%;
-}
-.background-image-photo{
-    background-image: url("../assets/studio-modified.jpg");
-    width: 100%;
-    height: 750px;
-}
-.background-image-photo h1{
-    font-size: 65px;
-    width: 36%;
-    padding: 2%;
-    position: relative;
-    margin-left: 3%;
-    top: 250px;
-    color: #0000ff;
-    text-align: left;
-    background-color: #ffffff8c;
-}
-#plugin-photo{
-    width: 50%;
-    height: 50%;
-    border-radius: 4px;
-    cursor: none;
-}
-.show-view{
-    margin-top: 2%;
-    width: 100%;
-    height: 20%;
-}
-.icon-view{
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-}
-
 </style>
   

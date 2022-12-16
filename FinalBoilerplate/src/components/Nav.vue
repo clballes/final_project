@@ -158,6 +158,19 @@ button{
     transition: all 0.3 ease-in-out;
     background-color:#ffffffee;
 }
+#link-router{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#link-router a{
+    color: white;
+}
+#link-router a:hover{
+    color: blue;
+}
 @media (max-width: 420px){
     .nav{
         display: flex;
@@ -167,7 +180,7 @@ button{
         display: none;
       }
       .nav-title li{
-        margin-top: 3%;
+        margin-top: 8%;
         color: #0000ffe8;
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 400;
@@ -207,10 +220,13 @@ button{
       width: 91%;
       display: flex;
       align-items: center;
+      height: 70px;
       /* position: sticky; */
     }
     .nav-title{
        display:block;
+       margin-left: 35%;
+      margin-top: 3%;
     }
     ul{
         padding-inline-start: 0px;

@@ -273,7 +273,7 @@ textarea{
     border-radius: 20px;
     padding: 4%;
     width: 450px;
-    background-color: #0000ffe8;
+    background-color: #0000ffc1;
     color: white;
     margin-top: 5%;
     margin-right: 50px;

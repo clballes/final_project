@@ -11,7 +11,6 @@ export const useTaskStore = defineStore("tasks", {
     changeTempTask(param) { 
       this.temporalTags = param;
     },
-    
     async fetchTasks() {
       const { data: tasks } = await supabase
         .from("tasks")
@@ -19,6 +18,15 @@ export const useTaskStore = defineStore("tasks", {
         .order("id", { ascending: false });
       this.tasks = tasks;
       return this.tasks;
+    },
+    async fetchTasksTags() {
+      const { data: tasks_tags } = await supabase
+        .from("tasks")
+        .select("tasks_tags")
+        .order("id", { ascending: false });
+      this.tasks_tags = tasks_tags;
+      return this.tasks_tags;
+      
     },
     async addTask(title, description, plugin_url, tasks_tags) {
       const { data, error } = await supabase.from("tasks").insert([

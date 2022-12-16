@@ -14,31 +14,33 @@
         <img src="../assets/PT2019.png" alt="protools" class="icon-daw">
         <img src="../assets/cubase.png" alt="cubase" class="icon-daw">
     </div>
-    <hr id="hr-task" />
     <!-- SHOW DIFFERENTS VIEWS, SEARCHBAR AND OWN TABLE -->
-    <div v-if="showView">
-            <!-- OWN PANEL UPDLOAD YOUR OWNN PLUGINS -->
-            <div class="flex-lock">
-              <button class="btn-lock-h3">
-              <h3>Search and save plugins from others</h3>
-              <font-awesome-icon @click="toggleShow" icon="fa-solid fa-lock" class="icon-view" />
-            </button>
+    <section id="section-locker">
+      <div v-if="showView">
+              <!-- OWN PANEL UPDLOAD YOUR OWNN PLUGINS -->
+              <div class="flex-lock">
+                <button class="btn-lock-h3">
+                <h3 class="h3-locker" @click="toggleShow">Search and save plugins from others</h3>
+                <font-awesome-icon @click="toggleShow" icon="fa-solid fa-lock" class="icon-view" />
+              </button>
+              </div>
+              <NewTask @emitTask ="getTasks" />
+              <div class="homeTask">
+                <TaskItem v-for="task in tasks" :key="task.id" :task="task"
+                          @emitTask="getTasks"/>
+              </div>
+      </div>
+      <div v-else>
+              <!-- SEARCHBAR BETWEEN DIFFERENTS PLUGINS -->
+              <div class="flex-lock">
+                <button class="btn-lock-h3">
+                  <h3 class="h3-locker" @click="toggleShow">Upload plugins in your panel</h3>
+                  <font-awesome-icon @click="toggleShow" icon="fa-solid fa-unlock" class="icon-view"/>
+                  <SearchPlugin />
+              </button>
             </div>
-            <NewTask @emitTask ="getTasks" />
-            <div class="homeTask">
-              <TaskItem v-for="task in tasks" :key="task.id" :task="task"
-                        @emitTask="getTasks"/>
-            </div>
-    </div>
-    <div v-else>
-            <!-- SEARCHBAR BETWEEN DIFFERENTS PLUGINS -->
-          <div class="flex-lock">
-            <button class="btn-lock-h3">
-              <h3>Upload your plugins in your panel</h3>
-              <font-awesome-icon @click="toggleShow" icon="fa-solid fa-unlock" class="icon-view"/>
-            </button>
-          </div>
-    </div>  
+      </div>  
+    </section>
       
   </div>
   <Footer />
@@ -55,6 +57,7 @@ import { useUserStore } from "../stores/user";
 import Footer from '../components/Footer.vue';
 import Tag from '../components/Tag.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+// import SearchPlugin from '../components/SearchPlugin.vue';
 
 const showView = ref(false);
 const toggleShow = (() => {
